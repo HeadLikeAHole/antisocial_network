@@ -1,0 +1,97 @@
+* {
+    /* first three rules override browser defaults */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* stops long words from overflowing */
+    overflow-wrap: break-word;
+    /* remove dotted outline around links */
+    outline: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc501;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#logo span {
+    font-size: 1.4rem;
+    margin-left: 0.2em;
+}
+
+nav img {
+    /* https://stackoverflow.com/questions/5804256/image-inside-div-has-extra-space-below-the-image/5804278 */
+    display: block;
+    height: 2.5em;
+}
+
+/*nav img:hover {*/
+/*    transform: scale(1.2);*/
+/*}*/
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: black;
+}
+
+nav a:active {
+    color: rgb(50, 50, 50);
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card {
+    width: 100%;
+    margin: 3em auto;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px rgb(230, 230, 230);
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.card img {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+    .card {
+        width: 700px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
