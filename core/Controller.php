@@ -49,3 +49,4 @@ class Controller
 }
 
 // todo change php tags to double curly braces
+// todo combine header and footer into single file and add title variable

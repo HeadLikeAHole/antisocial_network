@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
     <title>Title</title>
 </head>
 
@@ -14,7 +14,7 @@
 <nav>
     <div>
         <a href="/" id="logo">
-            <img src="img/logo.jpg" alt="logo" title="Antisocial Network">
+            <img src="/img/logo.jpg" alt="logo" title="Antisocial Network">
             <p><span>Anti</span>social network</p>
         </a>
     </div>

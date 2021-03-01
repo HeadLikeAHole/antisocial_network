@@ -10,7 +10,7 @@ class RememberedLogin extends Model
     public string $remembered_token;
     public string $token_hash;
     public string $expires;
-    public string $expiration_date;
+    public string $expiration;
 
     public static function tableName(): string
     {
@@ -19,7 +19,7 @@ class RememberedLogin extends Model
 
     public function tableColumns(): array
     {
-        return ['token_hash', 'user_id', 'expiration_date'];
+        return ['token_hash', 'user_id', 'expiration'];
     }
 
     public function rememberLogin($user_id)
@@ -32,7 +32,7 @@ class RememberedLogin extends Model
         // cookie expiration time (30 days from now)
         $this->expires = time() + 60 * 60 * 24 * 30;
         // cookie expiration time converted to necessary date format to be saved to database
-        $this->expiration_date = date('Y-m-d H:i:s', $this->expires);
+        $this->expiration = date('Y-m-d H:i:s', $this->expires);
 
         return $this->create();
     }
@@ -53,6 +53,6 @@ class RememberedLogin extends Model
 
     public function hasExpired()
     {
-        return strtotime($this->expiration_date) < time();
+        return strtotime($this->expiration) < time();
     }
 }

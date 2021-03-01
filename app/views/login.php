@@ -10,4 +10,6 @@
 
     </form>
 
+    <a href="/password-reset-request">Forgot password?</a>
+
 <?php include 'footer.php'; ?>

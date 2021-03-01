@@ -41,5 +41,9 @@ $app->route->path('/activate-success', [Account::class, 'activateSuccess']);
 $app->route->path('/login', [Account::class, 'login']);
 $app->route->path('/logout', [Account::class, 'logout']);
 $app->route->path('/logout-success', [Account::class, 'logoutSuccess']);
+$app->route->path('/password-reset-request', [Account::class, 'passwordResetRequest']);
+$app->route->path('/password-reset-request-success', [Account::class, 'passwordResetRequestSuccess']);
+$app->route->path('/password-reset/{token:[\da-f]+}', [Account::class, 'passwordReset']);
+$app->route->path('/password-reset-success', [Account::class, 'passwordResetSuccess']);
 
 $app->run();

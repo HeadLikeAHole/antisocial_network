@@ -7,6 +7,8 @@ CREATE TABLE `user` (
     password_hash LONGTEXT NOT NULL,
     activation_token_hash VARCHAR(64) UNIQUE,
     is_active BOOLEAN DEFAULT 0,
+    password_reset_hash LONGTEXT,
+    password_reset_expiration DATETIME,
     is_superuser BOOLEAN DEFAULT 0,
     is_staff BOOLEAN DEFAULT 0
 );
@@ -42,7 +44,7 @@ CREATE TABLE `post` (
 CREATE TABLE `remembered_login` (
     token_hash VARCHAR(64) PRIMARY KEY,
     user_id INT NOT NULL,
-    expiration_date DATETIME NOT NULL,
+    expiration DATETIME NOT NULL,
     FOREIGN KEY (user_id)
         REFERENCES user(id)
         ON UPDATE CASCADE

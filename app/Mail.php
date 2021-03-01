@@ -42,13 +42,22 @@ class Mail
         }
     }
 
+    // todo change url when deploying
     public static function sendActivationEmail(string $to, string $token)
     {
-        // todo change url when deploying
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/activate/' . $token;
         $text = self::getTemplate('account_activation.txt', ['url' => $url]);
         $html = self::getTemplate('account_activation.html', ['url' => $url]);
 
         self::send($to, 'Account Activation', $text, $html);
+    }
+
+    public static function sendPasswordResetEmail(string $to, string $token)
+    {
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . '/password-reset/' . $token;
+        $text = self::getTemplate('password_reset.txt', ['url' => $url]);
+        $html = self::getTemplate('password_reset.html', ['url' => $url]);
+
+        self::send($to, 'Password reset request', $text, $html);
     }
 }

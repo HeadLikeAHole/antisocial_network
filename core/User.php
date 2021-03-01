@@ -41,6 +41,7 @@ class User extends FormModel
         return $this->create();
     }
 
+    // activate account by setting "is_active" to true
     public static function activate($token)
     {
         $token = new Token($token);
@@ -64,5 +65,27 @@ class User extends FormModel
             return false;
         }
         return $user;
+    }
+
+    public static function createPasswordResetToken($email)
+    {
+        $user = self::get('email', $email);
+
+        if ($user) {
+            $token = new Token();
+            $user->token = $token->getToken();
+            $password_reset_hash = $token->getHashedToken();
+            $password_reset_expiration = date('Y-m-d H:i:s', time() + 60 * 60 * 2);  // 2 hours from now
+            self::update([
+                'set' => [
+                    'password_reset_hash' => $password_reset_hash,
+                    'password_reset_expiration' => $password_reset_expiration
+                ],
+                'where' => ['id' => $user->id]
+            ]);
+            return $user;
+        }
+
+        return false;
     }
 }

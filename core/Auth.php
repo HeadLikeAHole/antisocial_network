@@ -45,10 +45,8 @@ class Auth
         if (Application::$app->session->get('user_id')) {
             return User::get('id', Application::$app->session->get('user_id'));
         } else {
-            self::loginFromRememberedLogin();
+            return self::loginFromRememberedLogin();
         }
-
-        return false;
     }
 
     public static function deleteRememberedLogin()

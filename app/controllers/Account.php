@@ -91,4 +91,44 @@ class Account extends Controller
     {
         $this->render('logout_success');
     }
+
+    public function passwordResetRequest(Request $request)
+    {
+        if ($request->method() === 'post') {
+            $user = User::createPasswordResetToken($request->data()['email']);
+
+            if ($user) {
+                Mail::sendPasswordResetEmail($user->email, $user->token);
+            }
+
+            $this->redirect('/password-reset-request-success');
+        } else {
+            $this->render('password_reset_request');
+        }
+    }
+
+    public function passwordResetRequestSuccess()
+    {
+        $this->render('password_reset_request_success');
+    }
+
+    public function passwordReset(Request $request)
+    {
+        $user = new User();
+        $form = new Form($user, [
+            'inputTypes' => ['password' => 'password'],
+            'exclude' => ['username', 'email']
+        ]);
+
+        if ($request->method() === 'post') {
+            $user->setData($request->data());
+            if ($user->validate() && $user->createUser()) {
+                $this->redirect('/password-reset-success');
+            } else {
+                $this->render('password_reset', ['form' => $form]);
+            }
+        } else {
+            $this->render('password_reset', ['form' => $form]);
+        }
+    }
 }
