@@ -40,7 +40,7 @@ abstract class FormModel extends Model
         $errorMessages = [
             self::REQUIRED => 'This field is required',
             self::EMAIL => 'Invalid email address',
-            self::PASSWORD => 'Password must contain at least one letter and at least one number',
+            self::PASSWORD => 'Password must contain at least one lowercase letter, one uppercase letter, one digit and be minimum eight characters long',
             self::MIN_LENGTH => 'This field must be minimum {{ $param }} characters long',
             self::MAX_LENGTH => 'This field must be maximum characters {{ $param }} long',
             self::MATCH => 'This field must match {{ $param }} field',
@@ -84,10 +84,10 @@ abstract class FormModel extends Model
                     $this->addValidationError($inputName, $rule);
                 }
 
-                // todo refactor two regex patterns into one
-                // check if password contains at least one letter and at least one number
+                // check if password contains at least one lowercase letter, one uppercase letter,
+                // one digit and minimum eight word characters
                 if ($ruleName === self::PASSWORD) {
-                    if (!preg_match('/\d+/', $inputValue) || !preg_match('/[a-zA-Z]+/', $inputValue)) {
+                    if (!preg_match('/(?=[^a-z]*[a-z]+)(?=[^A-Z]*[A-Z]+)(?=\D*\d+)\w{8,}/', $inputValue)) {
                         $this->addValidationError($inputName, $rule);
                     }
                 }

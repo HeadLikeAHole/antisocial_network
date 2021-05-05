@@ -26,7 +26,7 @@ class User extends FormModel
         return [
             'username' => [self::REQUIRED, [self::UNIQUE, 'username'], [self::MIN_LENGTH, 3], [self::MAX_LENGTH, 150]],
             'email' => [self::REQUIRED, [self::UNIQUE, 'email'], [self::MAX_LENGTH, 150]],
-            'password' => [self::REQUIRED, self::PASSWORD, [self::MIN_LENGTH, 8]]
+            'password' => [self::REQUIRED, self::PASSWORD]
         ];
     }
 

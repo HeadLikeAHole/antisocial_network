@@ -122,5 +122,3 @@ abstract class Model
         return $statement->execute();
     }
 }
-
-// todo change fetchObject to class instance
