@@ -6,12 +6,12 @@ namespace core;
 
 class Application
 {
-    public static string $rootDir;
-    public static self $app;
-    public Database $db;
-    public Request $request;
-    public Session $session;
-    public Route $route;
+    public static $rootDir;
+    public static $app;
+    public $db;
+    public $request;
+    public $session;
+    public $route;
 
     public function __construct(string $rootDir, array $config)
     {

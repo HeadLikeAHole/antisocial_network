@@ -6,8 +6,8 @@ namespace core;
 
 class Controller
 {
-    public array $globals;
-    public array $params;
+    public $globals;
+    public $params;
 
     public function __construct(array $params)
     {

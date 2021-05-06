@@ -6,11 +6,11 @@ namespace core;
 
 class RememberedLogin extends Model
 {
-    public int $user_id;
-    public string $remembered_token;
-    public string $token_hash;
-    public string $expires;
-    public string $expiration;
+    public $user_id;
+    public $remembered_token;
+    public $token_hash;
+    public $expires;
+    public $expiration;
 
     public static function tableName(): string
     {

@@ -14,7 +14,7 @@ abstract class FormModel extends Model
     const MATCH = 'match';
     const UNIQUE = 'unique';
 
-    public array $errors = [];
+    public $errors = [];
 
     // input names used by Form class to create form inputs
     abstract public function formInputs(): array;

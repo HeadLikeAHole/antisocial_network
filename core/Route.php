@@ -6,9 +6,9 @@ namespace core;
 
 class Route
 {
-    public Request $request;
-    private array $routes;
-    private array $params;
+    public $request;
+    private $routes;
+    private $params;
 
     public function __construct(Request $request)
     {

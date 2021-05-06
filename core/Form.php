@@ -6,8 +6,8 @@ namespace core;
 
 class Form
 {
-    public Model $model;
-    public array $options;
+    public $model;
+    public $options;
 
     public function __construct(Model $model, $options = [])
     {
